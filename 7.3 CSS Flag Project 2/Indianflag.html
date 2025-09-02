@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Accurate Indian Flag</title>
+  <style>
+    .flag {
+      width: 900px;
+      height: 600px;
+      border: 1px solid #000;
+      overflow: hidden;
+      box-sizing: border-box;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+    /* Bands */
+    .band {
+      width: 100%;
+      height: 200px; /* 1/3 of 600px */
+      position: absolute;
+      left: 0;
+    }
+    .saffron {
+      background: #FF9933;
+      top: 0;
+    }
+    .white {
+      background: #FFF;
+      top: 200px;
+    }
+    .green {
+      background: #138808;
+      top: 400px;
+    }
+    /* Chakra */
+    .chakra {
+      position: absolute;
+      top: 300px;  /* Center of flag: 600px /2 = 300px */
+      left: 450px; /* Center of flag: 900px /2 = 450px */
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #054187;
+      background: transparent;
+      box-sizing: border-box;
+      z-index: 2;
+    }
+    /* Center dot */
+    .center-dot {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #054187;
+      border-radius: 50%;
+      z-index: 3;
+    }
+    /* Spokes */
+    .spoke {
+      position: absolute;
+      width: 2px;
+      height: 60px;
+      left: 50%;
+      top: 50%;
+      background: #054187;
+      transform-origin: bottom;
+    }
+  </style>
+</head>
+<body>
+  <div class="flag">
+    <div class="band saffron"></div>
+    <div class="band white"></div>
+    <div class="band green"></div>
+    <div class="chakra">
+      <div class="center-dot"></div>
+      <!-- Spokes will be generated -->
+    </div>
+  </div>
+  <script>
+    // Generate 24 spokes
+    const chakra = document.querySelector('.chakra');
+    for (let i = 0; i < 24; i++) {
+      const spoke = document.createElement('div');
+      spoke.classList.add('spoke');
+      spoke.style.transform = `translate(-50%, -100%) rotate(${i * 15}deg)`;
+      chakra.appendChild(spoke);
+    }
+  </script>
+</body>
+</html>
